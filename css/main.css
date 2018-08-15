@@ -1,0 +1,30 @@
+body {
+	opacity: 0.95;
+	background-color: #111111;
+	color: #55ff55;
+	font-family: monospace;
+	position: relative;
+	margin-left:180px;
+	line-height: 1.3;
+
+}
+
+.intro {
+	float:right;
+	margin-right:130px;
+	
+	
+}
+
+a, a:visited, a:link {
+	color: #E9E9E9;
+	text-decoration: none;
+}
+
+
+.output {
+  color: white;
+}
+.active:after {
+  content: '_';
+} 
