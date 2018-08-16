@@ -86,6 +86,13 @@
 
 		<script src = "js/jquery.js"></script>
 		<script src = "js/main.js"></script>
+		<script src="mobile-detect.js"></script>
+		<script>
+		var md = new MobileDetect(window.navigator.userAgent);
+		if (md.mobile() || md.tablet()) {
+			document.location.href = 'mobile-page.html';
+		}
+		</script>
 	</body>
 
 
