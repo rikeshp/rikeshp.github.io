@@ -9,6 +9,12 @@ body {
 
 }
 
+@media screen and (max-width: 768px) {
+	.termcontainer{
+		display:none;
+	}
+}
+
 .intro {
 	float:right;
 	margin-right:130px;
