@@ -20,9 +20,6 @@ body {
 }
 
 @media screen and (max-width: 1000px) {
-	.termcontainer{
-		display:none;
-	}
 	.intro {
 		float:right;
 		margin-right:19%;
