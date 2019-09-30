@@ -31,7 +31,7 @@ America's Demand for Guns has Skyrocketed Over the Past Two Decades
 The data used comes from the FBI's National Instant Criminal Background Check System (NICS) which began in 1998.</p>
 <!--<h2 style="float: right; color: #303030; font-size: 30px;">Key Points</h2> -->
 
-<ul style="margin-top: 150px; margin-right: 10px; float: right; max-width: 800px; color: #393939;list-style-type:disc; font-size: 24px;">
+<ul style="margin-top: 120px; margin-right: 10px; float: right; max-width: 700px; color: #393939;list-style-type:disc; font-size: 24px;">
   <li style="margin-bottom: 5px;"> In 2018, <b>4.5 million</b> more background checks where initiated through NICS than in 2000. This amounts to a <b>65% increase in under two decades</b>.</li>
   <li> Longun(Rifle/Shotgun) purchases accounted for just <b>43% of total background checks initiated in 2018</b>, down from 68% in 2000.  </li>
 </ul>  
@@ -40,12 +40,10 @@ The data used comes from the FBI's National Instant Criminal Background Check Sy
 
 
 <script>
-
 // set the dimensions and margins of the graph
-var margin = {position: "fixed", top: 20, left: 70, right: 50, bottom: 50},
-    width = 600 - margin.left - margin.right,
-    height = 560 - margin.top - margin.bottom;
-
+var margin = {position: "fixed", top: 40, left: 70, right: 10, bottom: 50},
+    width = 450 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
   .append("svg")
@@ -54,13 +52,10 @@ var svg = d3.select("#my_dataviz")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
-
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/rikeshp/data_sources_for_projects/master/yearly_background_check_data.csv", function(data) {
-
   // List of groups = header of the csv files
   var keys = data.columns.slice(1)
-
   // Add X axis
   var x = d3.scaleLinear()
     .domain(d3.extent(data, function(d) { return d.year; }))
@@ -68,7 +63,6 @@ d3.csv("https://raw.githubusercontent.com/rikeshp/data_sources_for_projects/mast
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).ticks(5));
-
   // Add X axis label:
   svg.append("text")
       .attr("text-anchor", "end")
@@ -77,14 +71,12 @@ d3.csv("https://raw.githubusercontent.com/rikeshp/data_sources_for_projects/mast
 	  .style("font-family", "Arial")
 	  .style("font-size", 12) 
       .text("Time (year)");
-
   // Add Y axis
   var y = d3.scaleLinear()
     .domain([-10000000, 10000000])
     .range([ height, 0 ]);
   svg.append("g")
     .call(d3.axisLeft(y));
-
   // Add Y axis label:
   svg.append("text")
       .attr("text-anchor", "end")
@@ -93,18 +85,15 @@ d3.csv("https://raw.githubusercontent.com/rikeshp/data_sources_for_projects/mast
 	  .style("font-family", "Arial")
 	  .style("font-size", 12)
       .text("# of Checks Conducted");
-
   // color palette
   var color = d3.scaleOrdinal()
     .domain(keys)
     .range(["#3E6680", "#81DA87"]);
-
   //stack the data?
   var stackedData = d3.stack()
     .offset(d3.stackOffsetSilhouette)
     .keys(keys)
     (data)
-
   // create a tooltip
   var Tooltip = svg
     .append("text")
@@ -132,13 +121,11 @@ d3.csv("https://raw.githubusercontent.com/rikeshp/data_sources_for_projects/mast
     Tooltip.style("opacity", 0)
     d3.selectAll(".myArea").style("opacity", 1).style("stroke", "none")
    }
-
   // Area generator
   var area = d3.area()
     .x(function(d) { return x(d.data.year); })
     .y0(function(d) { return y(d[0]); })
     .y1(function(d) { return y(d[1]); })
-
   // Show the areas
   svg
     .selectAll("mylayers")
@@ -151,6 +138,5 @@ d3.csv("https://raw.githubusercontent.com/rikeshp/data_sources_for_projects/mast
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
       .on("mouseleave", mouseleave)
-
 })
 </script>
