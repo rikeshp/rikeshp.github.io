@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Projects</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/main.css/">
+  
+  </head>
+
+
+  <body>
+    <nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/projectspage">Projects</a></li>
+<li><a href="https://rikeshp.github.io/Resume.pdf">Resume</a></li>
+</ul>
+    </nav>
+<div class="container">
+
+  		<div class="about">
+			<h1>Projects</h1>
+			
+			<ul class="contacts">
+				<li><a href="https://twitter.com/TitanicFates">@TitanicFates: a twitter bot dedicated to the fates of the titanic passengers. Written in Python and runs on Heroku cloud.</a></li>
+				<li><a href="https://rikeshp.github.io/Projects/demandforguns">Firearm Data Visualization. Written in HTML and JavaScript using the D3.js library.</a></li>
+				<li><a href="https://rikeshp.github.io/Projects/BankTelemarketing.pdf">Bank Telemarketing ML Project. Used machine learning algorithms (decision trees and k-NN) to predict
+whether or not bank clients will subscribe to a term deposit.</a></li>
+			</ul>
+</div>
+
+
+</div>
+  
+  <footer>
+   <ul>
+   <li><a href="mailto:hankquinlanhub@gmail.com">email</a></li>
+   <li><a href="https://github.com/hankquinlan">github.com/hankquinlan</a></li>
+   </ul>
+  </footer>
+  </body>
+
+</html>
