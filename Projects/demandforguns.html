@@ -9,41 +9,37 @@
 
 
 <style>
-body {
-    font-family: 'Lora', serif;
-}
+  body {
+      font-family: 'Lora', serif;
+    }
 </style>
 
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"; display:inline-block; </div>
 
 <head>
-<title>
-America's Demand for Guns has Skyrocketed Over the Past Two Decades
-</title>
+  <title>
+    America's Demand for Guns has Skyrocketed Over the Past Two Decades
+  </title>
 </head>
 
 <body>
-<h1 style="color: #000000; font-size: 35px;">America's Demand for Guns has Skyrocketed Over the Past Two Decades</h1>
-<p style="font-weight: bold; color: #000000; font-size: 20px;">by Rikesh Patel</p>
+  <h1 style="color: #000000; font-size: 2.3em;">America's Demand for Guns has Skyrocketed Over the Past Two Decades</h1>
+  <p style="font-weight: bold; color: #000000; font-size: 1.5em;">by Rikesh Patel</p>
 
-<p style="color: #393939; max-width: 1400px; font-family: 'Roboto Condensed', sans-serif; font-style: italic; font-size: 22px;"> The interactive graph below depicts the rise in total number of background checks initiated through NICS for handguns and longguns between January 1, 1999 and December 31, 2018.
-The data used comes from the FBI's National Instant Criminal Background Check System (NICS) which began in 1998.</p>
+  <p style="color: #393939; max-width: 100%; font-family: 'Roboto Condensed', sans-serif; font-style: italic; font-size: 1.5em;"> The interactive graph below depicts the rise in total number of background checks initiated through NICS for handguns and longguns between January 1, 1999 and December 31, 2018.
+    The data used comes from the <b>FBI's National Instant Criminal Background Check System (NICS) which began in 1998</b>.</p>
 <!--<h2 style="float: right; color: #303030; font-size: 30px;">Key Points</h2> -->
-
-<ul style="margin-top: 120px; margin-right: 10px; float: right; max-width: 700px; color: #393939;list-style-type:disc; font-size: 24px;">
-  <li style="margin-bottom: 5px;"> In 2018, <b>4.5 million</b> more background checks where initiated through NICS than in 2000. This amounts to a <b>65% increase in under two decades</b>.</li>
-  <li> Longun(Rifle/Shotgun) purchases accounted for just <b>43% of total background checks initiated in 2018</b>, down from 68% in 2000.  </li>
-</ul>  
-
+  <ul style="margin-right: 2%; max-width: 30%; float: right; color: #393939;list-style-type:disc; font-size: 1.7em;">
+    <li style="margin-bottom: 10%;"> In 2018, <b>4.5 million</b> more background checks where initiated through NICS than in 2000. This amounts to a <b>65% increase in under two decades</b>.</li>
+    <li> Longun(Rifle/Shotgun) purchases accounted for just <b>43% of total background checks initiated in 2018</b>, down from 68% in 2000.  </li>
+  </ul>
 </body>
 
 
 <script>
 // set the dimensions and margins of the graph
-var margin = {position: "fixed", top: 40, left: 70, right: 10, bottom: 50},
-    width = 450 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var margin = {position: "fixed", top: 40, left: 70, right: 10, bottom: 50}, width = 700, height = 500;
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
   .append("svg")
@@ -69,7 +65,7 @@ d3.csv("https://raw.githubusercontent.com/rikeshp/data_sources_for_projects/mast
       .attr("x", width)
       .attr("y", height-22 )
 	  .style("font-family", "Arial")
-	  .style("font-size", 12) 
+	  .style("font-size", 12)
       .text("Time (year)");
   // Add Y axis
   var y = d3.scaleLinear()
@@ -103,7 +99,7 @@ d3.csv("https://raw.githubusercontent.com/rikeshp/data_sources_for_projects/mast
     .style("font-size", 18)
 	.style("font-family", "Arial")
 	.style("font-style", "italic")
-	
+
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function(d) {
     Tooltip.style("opacity", .7)
@@ -115,7 +111,7 @@ d3.csv("https://raw.githubusercontent.com/rikeshp/data_sources_for_projects/mast
   var mousemove = function(d,i) {
     grp = keys[i]
     Tooltip.text(grp)
-	
+
   }
   var mouseleave = function(d) {
     Tooltip.style("opacity", 0)
