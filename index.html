@@ -8,208 +8,53 @@
 
   <!-- Put your site title here -->
   <title>
-    Hi, I'm Rikesh Patel. | I enjoy discovering knowledge and telling stories through data.
+    Barbie Doll Capital
   </title>
 
-  <meta name="description" content="Add small description of yourslef.">
+  <meta name="description" content="One Thesis To Rule Them All.">
   <!-- Add some coding keywords below, Ex: (React, CSS etc) -->
-  <meta name="keywords" content="Put your name, skills and some coding keywords" />
-  <link rel="stylesheet" href="index.css" />
+  <meta name="keywords" content="Barbie Doll Capital" />
+  <style>
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial;
+    font-size: 17px;
+  }
+
+  #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+  }
+
+  .content {
+    position: fixed;
+    bottom: 0;
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+  }
+  }
+</style>
 </head>
 
 <body>
 
-  <!-- ***** Header ***** -->
+<video autoplay muted id="myVideo">
+  <source src="doll.mov" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
 
-  <header class="header" role="banner" id="top">
-    <div class="row">
-      <nav class="nav" role="navigation">
-        <ul class="nav__items">
-          <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-          <li class="nav__item">
-            <a href="#about" class="nav__link">About</a>
-          </li>
-          <li class="nav__item">
-            <a href="#contact" class="nav__link">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <div class="header__text-box row">
-      <div class="header__text">
-        <h1 class="heading-primary">
-          <!-- Replace the following name with your name -->
-          <span>Hi, I'm Rikesh Patel.</span>
-        </h1>
-        <!-- Put a small paragraph about yourself -->
-        <p>I enjoy discovering knowledge and telling stories using data.</p>
-        <a href="resume.pdf" class="btn btn--pink">View my Resume</a>
-      </div>
-    </div>
-  </header>
+<div class="content">
+  <h1>One Thesis to Rule Them All.</h1>
+</div>
 
-  <main role="main">
-
-    <!-- ***** Work ***** -->
-
-    <section class="work" id="work">
-      <div class="row">
-        <h2>My Work</h2>
-        <div class="work__boxes">
-
-          <!-- Each div with the work__box class is a project. -->
-
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Predictive Modeling</h3>
-              <p>
-                Built decision tree and k-nearest neighbor classifiers to improve bank telemarketing.
-              </p>
-              <ul class="work__list">
-                <li>Python</li>
-                <li>Sklearn</li>
-                <li>Pandas</li>
-                <li>machine learning</li>
-              </ul>
-
-              <div class="work__links">
-                <a href="/Projects/Banking_Demo.html" target="_blank" class="link__text">
-                  View Project <span>&rarr;</span>
-                </a>
-              </div>
-            </div>
-            <div class="work__image-box">
-              <img src="./images/project-1.png" class="work__image" alt="Project 1" />
-            </div>
-          </div>
-
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Visualizing Firearm Data</h3>
-              <p>
-                Visualizing the number and type of firearms purchased over the past two decades.
-              </p>
-              <ul class="work__list">
-                <li>Javascript</li>
-                <li>D3.js</li>
-                <li>web scraping</li>
-              </ul>
-
-              <div class="work__links">
-                <a href="/Projects/demandforguns.html" class="link__text">
-                  View Project <span>&rarr;</span>
-                </a>
-              </div>
-            </div>
-            <div class="work__image-box">
-              <img src="./images/project-2.png" class="work__image" alt="Project 1" />
-            </div>
-          </div>
-          
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Bitcoin Ocean</h3>
-              <p>
-                Visualizing bitcoin transactions in real time, using images to represent transaction size.
-              </p>
-              <ul class="work__list">
-                <li>Node.js</li>
-                <li>Express</li>
-                <li>WebSockets</li>
-                <li>Heroku Deploy</li>
-                <li>Blockchain.info API</li>
-              </ul>
-
-              <div class="work__links">
-                <a href="http://bitcoin-ocean.herokuapp.com/" class="link__text">
-                  View Project <span>&rarr;</span>
-                </a>
-              </div>
-            </div>
-            <div class="work__image-box">
-              <img src="./images/project-4.png" class="work__image" alt="Project 4" />
-            </div>
-          </div>
-
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Twitter Bot</h3>
-              <p>
-                Python script that tweets different names of Titanic passengers every 4 hours.
-              </p>
-              <ul class="work__list">
-                <li>Python</li>
-                <li>REST APIs</li>
-                <li>Heroku</li>
-              </ul>
-
-              <div class="work__links">
-                <a href="https://twitter.com/TitanicFates" class="link__text">
-                  Visit Bot <span>&rarr;</span>
-                </a>
-              </div>
-            </div>
-            <div class="work__image-box">
-              <img src="./images/project-3.png" class="work__image" alt="Project 3" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ***** About ***** -->
-
-    <section class="about" id="about">
-      <div class="row">
-        <h2>About Me</h2>
-        <div class="about__content">
-          <div class="about__text">
-            <!-- Replace the below paragraph with info about yourself -->
-            <p>
-              Studying Software Development and Data Science at DePaul Univeristy
-              Chicago. Currently interested in Data Science and Data Engineering roles
-              at exciting companies.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ***** Contact ***** -->
-
-  <section class="contact" id="contact">
-    <div class="row">
-      <h2>Get in Touch</h2>
-      <div class="contact__info">
-        <!-- Replace the email with yours -->
-        <a href="mailto:rikeshp98@gmail.com" class="btn">rikeshp98@gmail.com</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ***** Footer ***** -->
-
-  <footer role="contentinfo" class="footer">
-    <div class="row">
-      <!-- Update the links to point to your accounts -->
-      <ul class="footer__social-links">
-        <li class="footer__social-link-item">
-          <a href="https://github.com/rikeshp/" title="Github Profile">
-            <img src="./images/github.svg" class="footer__social-image" alt="Github">
-          </a>
-        <li class="footer__social-link-item">
-          <a href="https://www.linkedin.com/in/rikesh-patel-285287183/">
-            <img src="./images/linkedin.svg" title="Linkedin Profile" class="footer__social-image" alt="Linkedin">
-          </a>
-        </li>
-      </u>
-  </footer>
-
-  <a href="#top" class="back-to-top" title="Back to Top">
-    <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
-  </a>
-  <script src="./index.js"></script>
 </body>
 
 </html>
