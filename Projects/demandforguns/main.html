@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js & color scale-->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lora|Roboto+Condensed|Roboto:400,400i&display=swap" rel="stylesheet">
+
+
+<style>
+  body {
+      font-family: 'Lora', serif;
+    }
+</style>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"; display:inline-block; </div>
+
+<head>
+  <title>
+    America's Demand for Guns has Skyrocketed Over the Past Two Decades
+  </title>
+</head>
+
+<body>
+  <h1 style="color: #000000; font-size: 2.3em;">America's Demand for Guns has Skyrocketed Over the Past Two Decades</h1>
+  <p style="font-weight: bold; color: #000000; font-size: 1.5em;">by Rikesh Patel</p>
+
+  <p style="color: #393939; max-width: 100%; font-family: 'Roboto Condensed', sans-serif; font-style: italic; font-size: 1.5em;"> The interactive graph below depicts the rise in total number of background checks initiated through NICS for handguns and longguns between January 1, 1999 and December 31, 2018.
+    The data used comes from the <b>FBI's National Instant Criminal Background Check System (NICS) which began in 1998</b>.</p>
+<!--<h2 style="float: right; color: #303030; font-size: 30px;">Key Points</h2> -->
+  <ul style="margin-right: 2%; max-width: 30%; float: right; color: #393939;list-style-type:disc; font-size: 1.7em;">
+    <li style="margin-bottom: 10%;"> In 2018, <b>4.5 million</b> more background checks where initiated through NICS than in 2000. This amounts to a <b>65% increase in under two decades</b>.</li>
+    <li> Longun(Rifle/Shotgun) purchases accounted for just <b>43% of total background checks initiated in 2018</b>, down from 68% in 2000.  </li>
+  </ul>
+</body>
+
+
+<script>
+// set the dimensions and margins of the graph
+var margin = {position: "fixed", top: 40, left: 70, right: 10, bottom: 50}, width = 700, height = 500;
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+// Parse the Data
+d3.csv("https://raw.githubusercontent.com/rikeshp/data_sources_for_projects/master/yearly_background_check_data.csv", function(data) {
+  // List of groups = header of the csv files
+  var keys = data.columns.slice(1)
+  // Add X axis
+  var x = d3.scaleLinear()
+    .domain(d3.extent(data, function(d) { return d.year; }))
+    .range([ 0, width ]);
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x).ticks(5));
+  // Add X axis label:
+  svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", width)
+      .attr("y", height-22 )
+	  .style("font-family", "Arial")
+	  .style("font-size", 12)
+      .text("Time (year)");
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([-10000000, 10000000])
+    .range([ height, 0 ]);
+  svg.append("g")
+    .call(d3.axisLeft(y));
+  // Add Y axis label:
+  svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", 140)
+      .attr("y", 10)
+	  .style("font-family", "Arial")
+	  .style("font-size", 12)
+      .text("# of Checks Conducted");
+  // color palette
+  var color = d3.scaleOrdinal()
+    .domain(keys)
+    .range(["#3E6680", "#81DA87"]);
+  //stack the data?
+  var stackedData = d3.stack()
+    .offset(d3.stackOffsetSilhouette)
+    .keys(keys)
+    (data)
+  // create a tooltip
+  var Tooltip = svg
+    .append("text")
+    .attr("x", 100)
+    .attr("y", 100)
+    .style("opacity", 0)
+    .style("font-size", 18)
+	.style("font-family", "Arial")
+	.style("font-style", "italic")
+
+  // Three function that change the tooltip when user hover / move / leave a cell
+  var mouseover = function(d) {
+    Tooltip.style("opacity", .7)
+    d3.selectAll(".myArea").style("opacity", .2)
+    d3.select(this)
+      .style("stroke", "black")
+      .style("opacity", 1)
+  }
+  var mousemove = function(d,i) {
+    grp = keys[i]
+    Tooltip.text(grp)
+
+  }
+  var mouseleave = function(d) {
+    Tooltip.style("opacity", 0)
+    d3.selectAll(".myArea").style("opacity", 1).style("stroke", "none")
+   }
+  // Area generator
+  var area = d3.area()
+    .x(function(d) { return x(d.data.year); })
+    .y0(function(d) { return y(d[0]); })
+    .y1(function(d) { return y(d[1]); })
+  // Show the areas
+  svg
+    .selectAll("mylayers")
+    .data(stackedData)
+    .enter()
+    .append("path")
+      .attr("class", "myArea")
+      .style("fill", function(d) { return color(d.key); })
+      .attr("d", area)
+      .on("mouseover", mouseover)
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
+})
+</script>
